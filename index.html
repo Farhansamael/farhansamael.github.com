@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🎁 Exclusive Gift Card!</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fdf0f5;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .gift-card {
+      background: linear-gradient(135deg, #ff6b6b, #ffa3a3);
+      border-radius: 15px;
+      padding: 25px;
+      max-width: 420px;
+      margin: 0 auto;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      color: white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gift-card h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+
+    .gift-card p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .code {
+      background: white;
+      color: #ff6b6b;
+      padding: 15px;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 8px;
+      margin: 20px 0;
+      letter-spacing: 3px;
+    }
+
+    button {
+      background: white;
+      color: #ff6b6b;
+      border: none;
+      padding: 12px 25px;
+      font-size: 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    button:hover {
+      background: #fff0f0;
+    }
+
+    #hidden-message {
+      display: none;
+      margin-top: 30px;
+      animation: fadeIn 2s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Spinner */
+    #spinner {
+      margin-top: 20px;
+      border: 6px solid #f3f3f3;
+      border-top: 6px solid #fff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin: 20px auto;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Falling emojis */
+    .emoji {
+      position: absolute;
+      font-size: 24px;
+      animation: fall 5s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    @keyframes fall {
+      0% { top: -50px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: absolute;
+      bottom: 0;
+      font-size: 20px;
+      color: pink;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: 0;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(30px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Emojis -->
+  <script>
+    const emojis = ["✨", "💖", "🌟", "💕", "💫"];
+    for (let i = 0; i < 30; i++) {
+      const e = document.createElement("div");
+      e.className = "emoji";
+      e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      e.style.left = Math.random() * 100 + "vw";
+      e.style.animationDuration = 4 + Math.random() * 3 + "s";
+      document.body.appendChild(e);
+    }
+
+    // Floating Hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
+      heart.innerText = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = 16 + Math.random() * 14 + "px";
+      heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  </script>
+
+  <div class="gift-card">
+    <h1>🎉 Exclusive Birthday Gift Card! 🎉</h1>
+    <p>Here's your <strong>₹10,000 Shopping Spree</strong>!</p>
+    <p>Redeemable on Amazon, Flipkart & more.</p>
+    <div class="code">H4PPY-B1RTHD4Y-2024</div>
+
+    <button onclick="redeemNow()">REDEEM NOW</button>
+    <div id="spinner"></div>
+
+    <div id="hidden-message">
+      <h2>PSYCH! 😜</h2>
+      <p>The <strong>real gift</strong> is...</p>
+      <p style="font-size: 24px;">💝 <strong>UNLIMITED LOVE FROM SAMAEL!</strong> 💝</p>
+      <p>Happy Birthday, SAMIKSHA! 🎂<br>
+        You are the joy in my every day, the calm in my chaos, and the sparkle in my forever. 💫<br><br>
+        Here’s to your smile, your laughter, and your beautiful soul. <br>
+        No returns. No expiry. Just endless love. 😘
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function redeemNow() {
+      document.getElementById("spinner").style.display = "block";
+      document.querySelector("button").style.display = "none";
+      setTimeout(() => {
+        document.getElementById("spinner").style.display = "none";
+        document.getElementById("hidden-message").style.display = "block";
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
